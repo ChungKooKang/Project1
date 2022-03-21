@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DataStructure.cpp" />
     <ClCompile Include="Literal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sort.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataStructure.h" />
     <ClInclude Include="Literal.h" />
     <ClInclude Include="Sort.h" />
   </ItemGroup>

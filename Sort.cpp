@@ -85,7 +85,7 @@ void InsertionSort(int input[], int size)
 }
 
 // Merge Sort
-// Time Complexity  : 
+// Time Complexity  : O(n logn)
 // Space Complexity :
 void Merge(int input[], int start, int half, int end, int temp[])
 {
@@ -131,4 +131,43 @@ void MergeSort(int input[], int start, int end, int temp[])
 	MergeSort(input, start, half, temp);
 	MergeSort(input, half + 1, end, temp);
 	Merge(input, start, half, end, temp);
+}
+// Quick Sort
+// Time Complexity : O(Cnlogn)
+// Space Complexity : O(n)
+void QuickSort(int input[], int left, int right)
+{
+	int i = left;
+	int j = right;
+	int pivot = input[(left + right) / 2];
+
+	do
+	{
+		while (input[i] < pivot)
+		{
+			i++;
+		}
+		while (input[j] > pivot)
+		{
+			j--;
+		}
+		if (i <= j)
+		{
+			Swap(input[i], input[j]);
+			i++;
+			j--;
+		}
+	} while (i <= j);
+	// base case + recursive case
+	if (left < j)
+	{
+		QuickSort(input, left, j);
+
+	}
+	if (right > i)
+	{
+		QuickSort(input, j, right);
+	}
+
+	return;
 }
