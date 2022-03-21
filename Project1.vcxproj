@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Literal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sort.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Literal.h" />
     <ClInclude Include="Sort.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
