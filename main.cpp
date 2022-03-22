@@ -4,8 +4,10 @@
 # include "DataStructure.h"
 int main()
 {
-	const int SIZE{ 5 };
-	int array[SIZE];
-
+	int array[10];
+	int top;
+	Queue myStack;
+	PrintInfoForQueue();
+	ProcessUserInputForQueue(myStack);
 	return 0;
 }
