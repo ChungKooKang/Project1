@@ -26,7 +26,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataStructure.h" />
+    <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Literal.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="Sort.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

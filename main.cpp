@@ -2,12 +2,11 @@
 # include "Sort.h"
 # include "Literal.h"
 # include "DataStructure.h"
+# include "LinkedList.h"
 int main()
 {
-	int array[10];
-	int top;
-	Queue myStack;
-	PrintInfoForQueue();
-	ProcessUserInputForQueue(myStack);
+	MonsterList myList;
+	
+	
 	return 0;
 }
