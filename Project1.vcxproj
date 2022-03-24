@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataStructure.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Literal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sort.cpp" />
