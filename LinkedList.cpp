@@ -2,6 +2,10 @@
 # include <cstring>
 # include <iostream>
 
+
+// Single Linked List
+
+
 Monster* CreateMonster(MonsterList& list, const char* name, const int hp)
 {
     Monster* pNew = new Monster{};
@@ -77,4 +81,84 @@ void DeleteAll(MonsterList& list)
 
     list.pHead = nullptr;
     list.pTail = nullptr;
+}
+
+bool DeleteMonster(MonsterList& list,const char* name)
+{
+    Monster* pCurrent = list.pHead;
+    Monster* pPrevious{};
+    while (pCurrent != nullptr)
+    {
+        if (strcmp(pCurrent->name, name) == 0)
+        {
+            break;
+        }
+        pPrevious = pCurrent;
+        pCurrent = pCurrent->pNext;
+    }
+    if (pCurrent == nullptr)
+    {
+        return false;
+    }
+    if (list.pHead == list.pTail)
+    {
+        //원소 하나만 있을 때
+        list.pHead = list.pTail = nullptr;
+    }
+    else if (list.pHead == pCurrent)
+    {
+        // 첫 번째 원소
+        list.pHead = pCurrent->pNext;
+    }
+    else if (list.pTail == pCurrent)
+    {
+        // 마지막 원소
+        list.pTail = pPrevious;
+        pPrevious->pNext = nullptr;
+
+    }
+    else
+    {
+        // 중간에 있을 때
+        pPrevious->pNext = pCurrent->pNext;
+
+    }
+    delete pCurrent;
+    return true;
+}
+
+
+// Double Linked List
+
+
+Monster2* CreateMonster(MonsterList2& list, const char* name, const int hp)
+{
+    return nullptr;
+}
+
+int GetCountMonsterList(const MonsterList2& list)
+{
+    return 0;
+}
+
+void PrintMonsterList(const MonsterList2& list)
+{
+}
+
+void PrintListRecursive(Monster2* monster)
+{
+}
+
+Monster2* FindMonster(const MonsterList2& list, const char* name)
+{
+    return nullptr;
+}
+
+void DeleteAll(MonsterList2& list)
+{
+}
+
+bool DeleteMonster(MonsterList2& list, const char* name)
+{
+    return false;
 }

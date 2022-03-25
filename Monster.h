@@ -1,9 +1,17 @@
 #pragma once
 const int NAME_LENGTH{ 16 };
-struct Monster
+struct Monster // Single Linked list
 {
 	char name[NAME_LENGTH];
 	int hp;
 
 	Monster* pNext;
+};
+struct Monster2 // Double Linked List
+{
+	char name[NAME_LENGTH];
+	int hp;
+
+	Monster* pNext;
+	Monster* pPrev;
 };

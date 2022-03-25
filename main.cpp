@@ -11,7 +11,7 @@ int main()
 	CreateMonster(myList, "Demon", 30);
 	std::cout << GetCountMonsterList(myList) << std::endl;
 	PrintMonsterList(myList);
-	PrintListRecursive(myList.pHead);
-	std::cout << ((FindMonster(myList, "Slime"))? "Not Found" : "Found") << std::endl;
+	DeleteMonster(myList, "Slime");
+	PrintMonsterList(myList);
 	return 0;
 }
