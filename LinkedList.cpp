@@ -133,32 +133,126 @@ bool DeleteMonster(MonsterList& list,const char* name)
 
 Monster2* CreateMonster(MonsterList2& list, const char* name, const int hp)
 {
+    Monster2* pNew = new Monster2{};
+
+    pNew->hp = hp;
+    strcpy_s(pNew->name, NAME_LENGTH, name);
+    if (list.pTail == nullptr)
+    {
+        list.pHead = pNew;
+        pNew->pPrev = nullptr;
+    }
+    else
+    {
+        list.pTail->pNext = pNew;
+        pNew->pPrev = list.pTail->pNext;
+    }
+    list.pTail = pNew;
     return nullptr;
 }
 
 int GetCountMonsterList(const MonsterList2& list)
 {
-    return 0;
+    int count{};
+    for (Monster2* i = list.pHead; i != nullptr; i = i->pNext)
+    {
+        count++;
+    }
+    return count;
 }
 
 void PrintMonsterList(const MonsterList2& list)
 {
+    for (Monster2* i = list.pHead; i != nullptr; i = i->pNext)
+    {
+        std::cout << "--------------" << std::endl;
+        std::cout << "name : " << i->name << std::endl
+                  << "hp : "    << i->hp << std::endl;
+    }
 }
 
 void PrintListRecursive(Monster2* monster)
 {
+    //base
+    if (monster == nullptr)
+    {
+        return;
+    }
+    //recursive
+    std::cout << monster->name << " : " << monster->hp << std::endl;
+    PrintListRecursive(monster->pNext);
 }
 
 Monster2* FindMonster(const MonsterList2& list, const char* name)
 {
+    for (Monster2* p = list.pHead; p != nullptr; p = p->pNext)
+    {
+        if (strcmp(p->name, name) == 0)
+        {
+            return p;
+        }
+    }
     return nullptr;
 }
 
 void DeleteAll(MonsterList2& list)
 {
+    Monster2* p = list.pHead;
+    Monster2* pNext{};
+    while (p != nullptr)
+    {
+        pNext = p->pNext;
+        delete p;
+        p = pNext;
+    }
+
+    list.pHead = nullptr;
+    list.pTail = nullptr;
 }
 
 bool DeleteMonster(MonsterList2& list, const char* name)
 {
-    return false;
+    Monster2* pCurrent = list.pHead;
+    Monster2* pPrevious{};
+    while (pCurrent != nullptr)
+    {
+        if (strcmp(pCurrent->name, name) == 0)
+        {
+            break;
+        }
+        pPrevious = pCurrent;
+        pCurrent = pCurrent->pNext;
+    }
+    if (pCurrent == nullptr)
+    {
+        return false;
+    }
+    if (list.pHead == list.pTail)
+    {
+        //원소 하나만 있을 때
+        list.pHead = list.pTail = nullptr;
+    }
+    else if (list.pHead == pCurrent)
+    {
+        // 첫 번째 원소
+        list.pHead = pCurrent->pNext;
+        pCurrent->pNext->pPrev = nullptr;
+    }
+    else if (list.pTail == pCurrent)
+    {
+        // 마지막 원소
+        list.pTail = pPrevious;
+        pPrevious->pNext = nullptr;
+
+    }
+    else
+    {
+        // 중간에 있을 때
+        pPrevious->pNext = pCurrent->pNext;
+        pCurrent->pNext->pPrev = pCurrent->pPrev;
+        pCurrent->pPrev->pNext = pCurrent->pNext;
+
+    }
+    delete pCurrent;
+    return true;
 }

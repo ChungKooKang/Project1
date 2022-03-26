@@ -12,6 +12,6 @@ struct Monster2 // Double Linked List
 	char name[NAME_LENGTH];
 	int hp;
 
-	Monster* pNext;
-	Monster* pPrev;
+	Monster2* pNext;
+	Monster2* pPrev;
 };
