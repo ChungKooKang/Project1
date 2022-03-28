@@ -18,8 +18,15 @@ int main()
 		void Grooming();
 		void Sit();
 
-	}
-
+	};
+	class Cat
+	{
+	private:
+		int age;
+		
+	public:
+		void Meow();
+	};
 
 	return 0;
 }
