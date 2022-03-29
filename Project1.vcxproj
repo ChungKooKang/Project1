@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cat.cpp" />
     <ClCompile Include="DataStructure.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Literal.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="Sort.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cat.h" />
     <ClInclude Include="DataStructure.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Literal.h" />

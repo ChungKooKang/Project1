@@ -3,6 +3,7 @@
 # include "Literal.h"
 # include "DataStructure.h"
 # include "LinkedList.h"
+# include "Cat.h"
 
 class Point2D
 {
@@ -30,6 +31,8 @@ int main()
 	Point2D pt1;
 
 	pt1.Set(1, 1);
+	Cat nacho;
+	nacho.Meow();
 	return 0;
 }
 
