@@ -32,6 +32,10 @@ int main()
 
 	pt1.Set(1, 1);
 	Cat nacho;
+	Cat* pCancho = new Cat;
+	pCancho->Meow();
+
+	delete pCancho;
 	nacho.Meow();
 	return 0;
 }
