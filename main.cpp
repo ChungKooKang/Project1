@@ -3,30 +3,58 @@
 # include "Literal.h"
 # include "DataStructure.h"
 # include "LinkedList.h"
+
+class Point2D
+{
+private :
+	int mX;
+	int mY;
+public :
+	// Getter  / Setter
+	
+	//Setter
+	void SetX(int x);
+	void Sety(int y);
+	void Set(int x, int y);
+
+	//Getter
+	void GetX();
+	void GetY();
+
+
+	void Print();
+};
+
 int main()
 {
-	class Cat // 변수와 함수를 묶음
-	{
-		//state
-		char name[20];
-		char breed[20];
-		int age;
+	Point2D pt1;
 
-
-		// Behaviour
-		void Meow();
-		void Grooming();
-		void Sit();
-
-	};
-	class Cat
-	{
-	private:
-		int age;
-		
-	public:
-		void Meow();
-	};
-
+	pt1.Set(1, 1);
 	return 0;
+}
+
+void Point2D::SetX(int x)
+{
+	mX = x;
+}
+
+void Point2D::Sety(int y)
+{
+	mY = y;
+}
+
+void Point2D::Set(int x, int y)
+{
+	mX = x;
+	mY = y;
+}
+
+void Point2D::GetX()
+{
+
+}
+
+void Point2D::GetY()
+{
+
 }
