@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cat.cpp" />
+    <ClCompile Include="Coordinate2D.cpp" />
     <ClCompile Include="DataStructure.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Literal.cpp" />
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cat.h" />
+    <ClInclude Include="Coordinate2D.h" />
     <ClInclude Include="DataStructure.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Literal.h" />
