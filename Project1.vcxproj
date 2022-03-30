@@ -26,6 +26,7 @@
     <ClCompile Include="Literal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sort.cpp" />
+    <ClCompile Include="Students.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cat.h" />
@@ -35,6 +36,7 @@
     <ClInclude Include="Literal.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Sort.h" />
+    <ClInclude Include="Students.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
