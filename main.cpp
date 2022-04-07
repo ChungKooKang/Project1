@@ -1,45 +1,37 @@
 # include <iostream>
-class Warrior
-{
-public:
-	void AttackWith(Sword& sword)
-	{
-		std::cout << "칼을 휘둘러 " << sword.mDamage << "만큼의 피해를 주었다!" << std::endl;
-	}
-	void Denfend();
-};
 
-class Point2D
-{
-	friend class Warrior; // 이건 됨 왜 ? 이건 warrior가 나올 건데 그것을 가져오겠다 하는 것 이어서
-	friend void Warrior::AttackWith(Sword& word); // 이거 안됨 왜? 이것은 Warrior가 나왔는데 활용하겠다라는 뜻
-	{
-		sword.mDamage *= 2;
-		std::cout << "강화성공 :" << sword.mDamage << std::endl;
-	}
-
-private :
-	int mDamage;
-public :
-	Sword(int dmg) : mDamage{ dmg }
-	{
-
-class Warrior
+class MyClass
 {
 public :
-	void AttackWith(Sword& sword)
-	{
-		std::cout << "칼을 휘둘러 " << sword.mDamage <<"만큼의 피해를 주었다!" << std::endl;
-	}
-	void Denfend();
-};
+	int mValue;
 
+	MyClass()
+	{
+		std::cout << "MyClass()" << std::endl;
+	}
+
+	MyClass(int x) : mValue{ x }
+	{
+		std::cout << "MyClass(int)" << std::endl;
+	}
+
+	MyClass(const MyClass& x) : mValue{ x.mValue } // 이건 자동으로 생성된다.
+	{
+		std::cout << "MyClass(MyClass&)" << std::endl;
+	}
+
+	MyClass& operator = (const MyClass& x)
+	{
+		std::cout << "operator = " << std::endl;
+		return *this;
+	}
+
+};
 
 int main()
 {
-	Sword shortSword(10);
-	Warrior player1;
-	UpgradeSword(shortSword);
-	player1.AttackWith(shortSword);
+	MyClass c1{ MyClass {1} }; // 이것도 만찬가지로 r-value 이기 때문에 복사가 안 일어나고 value에 이름만 붙여진다.
+	MyClass c2;  //이렇게 해야 복사 생성자가 일을 한다.
+	c2 = c1; // 대입연산자가 기본으로 이것을 허용한다. 이것을 copy assignment operator라고 한다.
 	return 0;
 }
