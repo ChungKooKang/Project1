@@ -1,31 +1,30 @@
 # include <iostream>
 
-class CPU
+class Cat
 {
+private :
+	int mAge;
 
+public :
+	int mWeight;
+
+public :
+	void Meow();
 };
 
-class GraphicCard
+class Dog
 {
+private :
+	int mAge;
 
-};
-class Keyboard
-{
+public :
+	int mWeight;
 
+public :
+	void Bark();
 };
-class Notebook
-{
-	CPU mCPU;				// is-part-of : 멤버변수화
-	Keyboard* mKeyboard;	// has-a      : 멤버 포인터 변수화
-	GraphicCard mGPU;
-};
+
 int main()
 {
-	Notebook gram, mackbook, omem;
-	Keyboard logitech;
-
-	gram->Keyboard = logitech;
-	
-
 	return 0;
 }
