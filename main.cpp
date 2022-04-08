@@ -1,25 +1,39 @@
 # include <iostream>
-class Animal
+// 게임 개발자
+class GameDeveloper
 {
-protected :
+public :
+	std::string mName;
 	int mAge;
-public :
-	int mWeight;
-};
 
-class Cat : public Animal
-{
-public :
-	void Meow();
 };
-
-class Dog : public Animal
+class Programmer : public GameDeveloper
 {
 
 public :
-	void Bark();
+	void Coding();
+	void Debugging();
 };
 
+class Designer : public GameDeveloper
+{
+public :
+	void Documentation();
+	void Presentation();
+};
+
+class ChiefProgrammer : public Programmer
+{
+public :
+	void Architecture();
+	void Scheduling();
+};
+class ChiefDesinger : public Designer
+{
+public :
+	void Meeting();
+	void Scheduling();
+};
 int main()
 {
 	Animal a;
