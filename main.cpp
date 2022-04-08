@@ -1,24 +1,20 @@
 # include <iostream>
-
-class Cat
+class Animal
 {
-private :
+protected :
 	int mAge;
-
 public :
 	int mWeight;
+};
 
+class Cat : public Animal
+{
 public :
 	void Meow();
 };
 
-class Dog
+class Dog : public Animal
 {
-private :
-	int mAge;
-
-public :
-	int mWeight;
 
 public :
 	void Bark();
@@ -26,5 +22,7 @@ public :
 
 int main()
 {
+	Animal a;
+	a.mAge = 10; // (x)
 	return 0;
 }
