@@ -3,32 +3,23 @@
 # include <vector>
 int main()
 {
-	// vector : 연속된 n개의 값 <집합>
+	std::vector<int> v{ 1, 2, 3 };
+	std::vector<int>::iterator itr; // iterator의 타입은 container에 내재되어 있다.
 
-	std::vector<int> v1{ 2, 3, 1, 5, 6 };
-	v1.push_back(4);
-	for (int element : v1)
-	{
-		std::cout << element << std::endl;
-	}
-
-	// 연습문제
-	// 숫자들을 입력 받고 총합계와 평균을 구해봅시다.
-	// 예) 1 2 3 6 4 8 0 4 0 10 d
-	// 숫자를 공백을 구분하여 입력하세요.
-	// 입력 종료는 숫자가 아닌 문자를 입력하시면 됩니다.
-	std::vector<int> v2{};
+	itr = v.begin();
 	
-	for (int value; std::cin >> value;)
+	// while 로 표현
+	while (itr != v.end())
 	{
-		v2.push_back(value);
+		std::cout << *itr << std::endl;
+		itr++;
 	}
-	int sum{};
-	for (int e : v2)
+
+	// for 로 표현
+	for (std::vector<int>::iterator itr2 = v.begin(); itr2 != v.end(); itr++)
 	{
-		sum += e;
+		std::cout << *itr2 << std::endl;
 	}
-	std::cout << sum << std::endl;
-	std::cout << static_cast<float>(sum) / v2.size() << std::endl;
+
 	return 0;
 }
