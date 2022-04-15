@@ -6,13 +6,22 @@ int main()
 	// vector : 연속된 n개의 값 <집합>
 
 	std::vector<int> v1{ 2, 3, 1, 5, 6 };
-	std::vector<std::string> v2 { "doggy", "kitty", "piggy", "bunny" };
+	for (int i = 0; i < v1.size(); ++i)
+		{
+			std::cout << v1[i] << std::endl;
+		}
+	std::cout << "----------" << std::endl;
 
-	std::vector<int> v3(5); // v3(집합의 크기);
-	std::vector<int> v4(5, 1); // v3(집합의 크기, 채우는 값);
+	// range - based loop [0 : size)	범위기반반복문
+	for (int element : v1)
+	{
+		std::cout << element << std::endl;
+	}
 
-	std::cout << v1[0] << std::endl;
-	v1[1] = 7;
-
+	int myArray[]{ 1, 2, 3, 4, 5 };
+	for (int e : myArray)
+	{
+		std::cout << e << std::endl;
+	}
 	return 0;
 }
