@@ -18,15 +18,17 @@ int main()
 	// 숫자를 공백을 구분하여 입력하세요.
 	// 입력 종료는 숫자가 아닌 문자를 입력하시면 됩니다.
 	std::vector<int> v2{};
-	int sum{};
-	int input{};
-	int count{};
-	while (std::cin >> input)
+	
+	for (int value; std::cin >> value;)
 	{
-		v2.push_back(input);
-		sum += v2[count];
-		count++;
+		v2.push_back(value);
+	}
+	int sum{};
+	for (int e : v2)
+	{
+		sum += e;
 	}
 	std::cout << sum << std::endl;
+	std::cout << static_cast<float>(sum) / v2.size() << std::endl;
 	return 0;
 }
