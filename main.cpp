@@ -6,8 +6,9 @@ int main()
 	std::vector<int> v{ 1, 2, 3, 4, 5 };
 
 	// range based for 범위기반으로 출력 만들기
-	for (int e : v)
+	for (int& e : v)
 	{
+		e = 1;
 		std::cout << e << std::endl;
 	}
 
