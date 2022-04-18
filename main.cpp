@@ -3,27 +3,18 @@
 # include <vector>
 int main()
 {
-	std::vector<int> v{ 1, 2, 3 };
-	std::vector<int>::iterator itr; // iterator의 타입은 container에 내재되어 있다.
+	std::vector<int> v{ 1, 2, 3, 4, 5 };
 
-	itr = v.begin();
-	
-	// while 로 표현
-	while (itr != v.end())
+	// range based for 범위기반으로 출력 만들기
+	for (int e : v)
 	{
-		std::cout << *itr << std::endl;
-		itr++;
+		std::cout << e << std::endl;
 	}
 
-	// for 로 표현
-	for (std::vector<int>::iterator itr2 = v.begin(); itr2 != v.end(); itr++)
-	{
-		std::cout << *itr2 << std::endl;
-	}
+	// iterator iterator로 출력 만들기
+	std::vector<int>::iterator itr2;
 
-	// ==
-
-	for (auto itr2 = v.begin(); itr2 != v.end(); itr++)	// auto로 대체 가능
+	for (itr2 = v.begin(); itr2 != v.end(); itr2++)
 	{
 		std::cout << *itr2 << std::endl;
 	}
