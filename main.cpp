@@ -10,13 +10,20 @@ int Compare(const void* left, const void* right)
 	return arg1 - arg2;
 }
 
+
+
 int main()
 {
 	
 	std::vector<int> v{ 3, 1, 3, 2, 5 };
 	int v2[]{ 3, 4, 1, 5, 2 };
-	// qsort 연습
-	std::qsort(&v[0],v.size(),sizeof(int), Compare);
+
+	// qsort 연습 & lambda exprssion 연습
+	std::qsort(&v[0], v.size(), sizeof(int), [](const void* left, const void* right)->int {
+		int arg1 = *static_cast<const int*>(left);
+		int arg2 = *static_cast<const int*>(right);
+		return arg1 - arg2;
+		});
 
 	// qsort 연습 C 버전
 	std::qsort(&v2[0], 5, sizeof(int), Compare);
