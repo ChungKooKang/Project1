@@ -21,5 +21,12 @@ int main()
 		std::cout << *itr2 << std::endl;
 	}
 
+	// ==
+
+	for (auto itr2 = v.begin(); itr2 != v.end(); itr++)	// auto로 대체 가능
+	{
+		std::cout << *itr2 << std::endl;
+	}
+
 	return 0;
 }
