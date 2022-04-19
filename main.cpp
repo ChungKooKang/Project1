@@ -11,6 +11,8 @@ int main()
 {
 	std::array<int, 4> intArray{ 0, 1, 2, 3 };
 
+	intArray.empty();  // array가 비었는지 아닌지 확인
+	intArray.fill(4);  // array를 4로 채움
 
 	for (const auto& e : intArray)
 	{
