@@ -4,26 +4,33 @@
 # include <algorithm>
 # include <numeric>
 # include <array>
-
+# include <forward_list>
 
 
 int main()
 {
-	std::vector<int> container {0, 1, 2, 3, 4};
-	//std::array<int, 4> container{ 0, 1, 2, 3 };
+	std::forward_list<int> container{ 10, 11, 20, 21 };
 
-	//container.push_back(3);  // 뒤에 원소가 하나 추가되며 이것은 O(1)이다.
-	//container.pop_back();	 // 뒤에 원소 하나를 뺴 버리며 이것 또한 복잡도가 O(1)이다.
-	//container.erase(container.begin()); // 특정 원소만 지우기 기거는 overhead가 일어나 느리게 된다.
-	//container.resize(10, 100);				// 배열의 크기를 조정하고 남는 공간에 '100'를 넣는다.
-	container.clear();					//원소들이 싹 없어진다.
+	std::forward_list<int>::iterator itr = std::find(container.begin(), container.end(), 11);
+	container.insert_after(itr, 12);
+	container.erase_after(itr);
+	container.sort([](const int& a, const int& b)
+		{
+			return a < b;
+		});
 
+// ==
+
+	container.sort(std::less<int>());
+
+	container.sort(std::greater<int>());
 
 	for (const auto& e : container)
 	{
 		std::cout << e << " ";
 	}
 	std::cout << std::endl;
+	
 
 	for (auto itr = container.begin(); itr != container.end(); itr++)
 	{
@@ -31,9 +38,9 @@ int main()
 	}
 	std::cout << std::endl;
 
-	for (int i = 0; i < container.size(); ++i)
+	/*for (int i = 0; i < container.size(); ++i)
 	{
 		std::cout << container[i] << " ";
-	}
+	}*/ // contiguous 가 아니어서 쓸 수 없다.
 	std::cout << std::endl;
 }
