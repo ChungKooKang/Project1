@@ -8,24 +8,19 @@
 # include <list>
 # include <deque>
 # include <stack>
+# include <queue>
 
 int main()
 {
-	std::stack<int> container;
+	std::queue<int> container;
 
-	std::stack<int> tempContainer(container);
 
 	container.push(1);
 	container.push(2);
 	container.push(3);
 	container.pop();
 	
-	while (!tempContainer.empty())
-	{
-		std::cout << tempContainer.top() << std::endl;
-
-		tempContainer.pop();
-	}
+	std::cout << container.front() << std::endl;
 
 	std::cout << std::endl;
 }
