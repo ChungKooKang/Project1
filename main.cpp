@@ -5,42 +5,27 @@
 # include <numeric>
 # include <array>
 # include <forward_list>
-
+# include <list>
+# include <deque>
+# include <stack>
 
 int main()
 {
-	std::forward_list<int> container{ 10, 11, 20, 21 };
+	std::stack<int> container;
 
-	std::forward_list<int>::iterator itr = std::find(container.begin(), container.end(), 11);
-	container.insert_after(itr, 12);
-	container.erase_after(itr);
-	container.sort([](const int& a, const int& b)
-		{
-			return a < b;
-		});
+	std::stack<int> tempContainer(container);
 
-// ==
-
-	container.sort(std::less<int>());
-
-	container.sort(std::greater<int>());
-
-	for (const auto& e : container)
-	{
-		std::cout << e << " ";
-	}
-	std::cout << std::endl;
+	container.push(1);
+	container.push(2);
+	container.push(3);
+	container.pop();
 	
-
-	for (auto itr = container.begin(); itr != container.end(); itr++)
+	while (!tempContainer.empty())
 	{
-		std::cout << *itr << " ";
+		std::cout << tempContainer.top() << std::endl;
+
+		tempContainer.pop();
 	}
-	std::cout << std::endl;
 
-	/*for (int i = 0; i < container.size(); ++i)
-	{
-		std::cout << container[i] << " ";
-	}*/ // contiguous 가 아니어서 쓸 수 없다.
 	std::cout << std::endl;
 }
