@@ -22,7 +22,7 @@ public :
 	std::string mName;
 	int mScore;
 
-	void Print()
+	void Print() const
 	{
 		std::cout << "(" << mNumber << ")" <<
 			mName << " : " << mScore << std::endl;
@@ -33,49 +33,86 @@ using Students = std::vector<Student>;
 void AddStudent(Students& v)
 {
 	// 번호, 이름, 점수 입력
-	Student temp;
-	std::cout << "번호를 입력하세요 : ";
-	std::cin >> temp.mNumber;
-	std::cout << std::endl;
-
-	std::cout << "이름을 입력하세요 : ";
-	std::cin >> temp.mName;
-	std::cout << std::endl;
-
-	std::cout << "점수를 입력하세요 : ";
-	std::cin >> temp.mScore;
-	std::cout << std::endl;
-	
-	v.push_back(temp);
+	Student newStudent;
+	std::cout << "번호 이름 점수 입력 : " << std::endl;
+	if (std::cin >> newStudent.mNumber >> newStudent.mName >> newStudent.mScore)
+	{
+		for (const auto& e : v)
+		{
+			if (e.mNumber == newStudent.mNumber)
+			{
+				std::cout << "중복된 번호입니다." << std::endl;
+				return;
+			}
+		}
+		v.push_back(newStudent);
+	}
+	else
+	{
+		std::cout << "잘못된 입력입니다." << std::endl;
+	}
 }
 
 void RemoveStudent(Students& v)
 {
 	// 번호로 삭제
+	std::cout << "삭제할 번호 : ";
 	int inputNumber;
-	std::vector<Student>::iterator itr;
-	std::cout << "삭제할 번호를 입력하세요 : ";
-	std::cin >> inputNumber;
-	std::find(v.begin(),v.end(), inputNumber);
-	v.erase()
+	if (std::cin >> inputNumber)
+	{
+		for (auto itr = v.begin(); itr != v.end(); ++itr)
+		{
+			if (itr->mNumber == inputNumber)
+			{
+				v.erase(itr);
+				return;
+			}
+		}
+		std::cout << "해당번호 학생이 존재하지 않습니다." << std::endl;
+	}
+	else
+	{
+		std::cout << "잘못된 입력입니다." << std::endl;
+	}
 }
 
 void PrintStudents(const Students& v)
 {
 	for (const auto& e : v)
 	{
-		std::cout << e.mNumber << ". " << e.mName << " : " << e.mScore << std::endl;
+		e.Print();
 	}
 }
 
 void PrintScoreInfo(const Students& v)
 {
+	int total{};
+	for (const auto& e : v)
+	{
+		total += e.mScore;
+	}
 
+	std::cout << "Total : " << total 
+			  << ", average : " << static_cast<float>(total) / v.size() 
+			  << std::endl;
 }
 
 void PrintOverAverage(const Students& v)
 {
+	float average{};
+	for (const auto& e : v)
+	{
+		average += e.mScore;
+	}
+	average /= v.size();
 
+	for (const auto& e : v)
+	{
+		if (e.mScore >= average)
+		{
+			e.Print();
+		}
+	}
 }
 
 int main()
