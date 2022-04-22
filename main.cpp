@@ -1,24 +1,31 @@
 # include <iostream>
 
-class MyClass
+enum Flags
 {
-public :
-	int x[100];
+	poison = 1,
+	bleed = 2,
+	paralyze = 3
 };
 
-template <typename T>
-void Swap(T& a, T& b)
+constexpr int operator | (Flags f1, Flags f2)
 {
-	T temp = std::move(a);
-	a = std::move(b);
-	b = std::move(temp);
-
+	return Flags(int(f1) | int(f2));
 }
+
 int main()
 {
-	int x{ 10 }, y{ 20 };
+	
+	Flags status;
 
-	Swap<int>(x, y);
+	switch (status)
+	{
+	case poison :
+		break;
 
-	std::cout << x << " : " << y << std::endl;
+	case poison | bleed :
+		break;
+
+	case bleed :
+		break;
+	}
 }
