@@ -18,71 +18,48 @@ private :
 
 
 public :
-	int mNumber;
 	std::string mName;
 	int mScore;
 
 	void Print() const
 	{
-		std::cout << "(" << mNumber << ")" <<
-			mName << " : " << mScore << std::endl;
+		std::cout << mName << " : " << mScore << std::endl;
 	}
 };
 
-using Students = std::vector<Student>;
+using Students = std::map<int,Student>;
 void AddStudent(Students& v)
 {
-	// 번호, 이름, 점수 입력
+	std::cout << " 번호 이름 점수 : ";
 	Student newStudent;
-	std::cout << "번호 이름 점수 입력 : " << std::endl;
-	if (std::cin >> newStudent.mNumber >> newStudent.mName >> newStudent.mScore)
+	int number;
+
+	if (std::cin >> number >> newStudent.mName >> newStudent.mScore)
 	{
-		auto itr = std::find_if(v.begin(), v.end(), [&](auto& e) {
-			return e.mNumber == newStudent.mNumber;
-			});
-		if (itr != v.end())
+		// auto == std::pair<std::map<int,number>::iterator, bool>
+		auto result = v.insert({number, newStudent});
+		if (result.second == false)
 		{
-			std::cout << "중복된 번호입니다." << std::endl;
+			std::cout << "중복된 학생 번호입니다." << std::endl;
 		}
-		for (const auto& e : v)
-		{
-			if (e.mNumber == newStudent.mNumber)
-			{
-				std::cout << "중복된 번호입니다." << std::endl;
-				return;
-			}
-		}
-		v.push_back(newStudent);
 	}
 	else
 	{
-		std::cout << "잘못된 입력입니다." << std::endl;
+		std::cout << "잘못된 입력입니다. " << std::endl;
 	}
+
 }
 
 void RemoveStudent(Students& v)
 {
-	// 번호로 삭제
-	std::cout << "삭제할 번호 : ";
-	int inputNumber;
-	if (std::cin >> inputNumber)
+	std::cout << "지울 학생 번호 :  ";
+	int number;
+	if (std::cin >> number)
 	{
-		auto itr = std::remove_if(v.begin(), v.end(), [&](auto& e) {
-			return e.mNumber == inputNumber;
-			});
-		if (itr == v.end())
+		if (v.erase(number) == 0)
 		{
-			std::cout << "해당 번호의 학생이 존재하지 않습니다." << std::endl;
+			std::cout << "없는 번호입니다." << std::endl;
 		}
-		for (auto itr = v.begin(); itr != v.end(); ++itr)
-		{
-			if (itr->mNumber == inputNumber)
-			{
-				v.erase(itr);
-				return;
-			}
-		}
-		std::cout << "해당번호 학생이 존재하지 않습니다." << std::endl;
 	}
 	else
 	{
@@ -94,37 +71,37 @@ void PrintStudents(const Students& v)
 {
 	for (const auto& e : v)
 	{
-		e.Print();
+		std::cout << "(" << e.first << ")" << " ";
+		e.second.Print();
 	}
 }
 
 void PrintScoreInfo(const Students& v)
 {
 	int total{};
-	for (const auto& e : v)
+	for (auto& e : v)
 	{
-		total += e.mScore;
+		total += e.second.mScore;
 	}
-
-	std::cout << "Total : " << total 
-			  << ", average : " << static_cast<float>(total) / v.size() 
-			  << std::endl;
+	std::cout << "Total" << total
+		<< ", average : " << total / v.size() << std::endl;
 }
 
 void PrintOverAverage(const Students& v)
 {
 	float average{};
-	for (const auto& e : v)
+	for (auto& e : v)
 	{
-		average += e.mScore;
+		average += e.second.mScore;
 	}
 	average /= v.size();
 
 	for (const auto& e : v)
 	{
-		if (e.mScore >= average)
+		if (e.second.mScore >= average)
 		{
-			e.Print();
+			std::cout << "(" << e.first << ")";
+			e.second.Print();
 		}
 	}
 }
@@ -136,11 +113,11 @@ int main()
 	// 3. Park 50
 	// 4. Choi 30
 
-	std::vector<Student> students{
-		{1, "Kim", 80},
-		{2, "Lee", 20},
-		{3, "Park", 50},
-		{4, "Choi", 30}
+	Students students{
+		{1, {"Kim",80}},
+		{2, {"Lee",20}},
+		{3, {"Park",50}},
+		{4, {"Choi",30}}
 	};
 	
 	int command{};
