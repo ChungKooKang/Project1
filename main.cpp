@@ -37,6 +37,13 @@ void AddStudent(Students& v)
 	std::cout << "번호 이름 점수 입력 : " << std::endl;
 	if (std::cin >> newStudent.mNumber >> newStudent.mName >> newStudent.mScore)
 	{
+		auto itr = std::find_if(v.begin(), v.end(), [&](auto& e) {
+			return e.mNumber == newStudent.mNumber;
+			});
+		if (itr != v.end())
+		{
+			std::cout << "중복된 번호입니다." << std::endl;
+		}
 		for (const auto& e : v)
 		{
 			if (e.mNumber == newStudent.mNumber)
@@ -60,6 +67,13 @@ void RemoveStudent(Students& v)
 	int inputNumber;
 	if (std::cin >> inputNumber)
 	{
+		auto itr = std::remove_if(v.begin(), v.end(), [&](auto& e) {
+			return e.mNumber == inputNumber;
+			});
+		if (itr == v.end())
+		{
+			std::cout << "해당 번호의 학생이 존재하지 않습니다." << std::endl;
+		}
 		for (auto itr = v.begin(); itr != v.end(); ++itr)
 		{
 			if (itr->mNumber == inputNumber)
