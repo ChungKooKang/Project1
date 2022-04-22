@@ -1,31 +1,18 @@
 # include <iostream>
 
-enum Flags
+enum class MyEnum1
 {
-	poison = 1,
-	bleed = 2,
-	paralyze = 3
+	Color = 1,
+	Alpha = 2
 };
 
-constexpr int operator | (Flags f1, Flags f2)
+enum class MyEnum2
 {
-	return Flags(int(f1) | int(f2));
-}
+	Color = 1
+};
 
 int main()
 {
-	
-	Flags status;
-
-	switch (status)
-	{
-	case poison :
-		break;
-
-	case poison | bleed :
-		break;
-
-	case bleed :
-		break;
-	}
+	MyEnum1::Color;
+	MyEnum2::Color;
 }
