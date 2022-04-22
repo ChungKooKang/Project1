@@ -1,15 +1,24 @@
 # include <iostream>
 
-using Lambda = void (*)(int, int);
+class MyClass
+{
+public :
+	int x[100];
+};
 
+template <typename T>
+void Swap(T& a, T& b)
+{
+	T temp = std::move(a);
+	a = std::move(b);
+	b = std::move(temp);
+
+}
 int main()
 {
-	Lambda lambda = [](int x, int y) -> void
-	{
-		std::cout << x << " " << y;
-	};
+	int x{ 10 }, y{ 20 };
 
-	lambda(1, 2);
+	Swap<int>(x, y);
 
-
+	std::cout << x << " : " << y << std::endl;
 }
