@@ -1,14 +1,17 @@
 # include <iostream>
 
-template<typename T, typename... Types>
-// Factory Pattern
-T* Make(Types... args)
+class MyClass
 {
-	return new T(args...);
-}
+
+};
 
 
 int main()
 {
+	MyClass* p = new MyClass; // 일반 포인터
 
+	std::unique_ptr<MyClass> sp{ new MyClass }; // smart pointer
+
+
+	delete p;
 }
