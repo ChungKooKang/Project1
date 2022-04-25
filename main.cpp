@@ -1,29 +1,23 @@
 # include <iostream>
 
-// À½¾Ç ¾Û
-class Song
+class Image
 {
-	public :
-		int mTrackNo;
-		std::string mTitle;
+	// ±×¸² ÆÄÀÏ
 
-		Song(int trackNo, std::string title) : mTrackNo{ trackNo }, mTitle{ title }
-		{
-
-		}
 };
 
-void DoSomething(Song* p)
+class Bug
 {
+	std::shared_ptr<Image> mspImage;
 
-}
+public :
+	Bug(std::shared_ptr<Image> image) : mspImage{image}
+	{
+
+	}
+};
 
 int main()
 {
-	std::unique_ptr<Song> spSong{ std::make_unique<Song>(1, "BattleBGM")};
 
-	std::cout << spSong->mTrackNo << " : " << spSong->mTitle << std::endl;
-
-	DoSomething(spSong.get());
-	
 }
