@@ -1,16 +1,17 @@
 # include <iostream>
 
 template<typename T,typename... Types>
-void Function(Types... args)
-{
-	int myArray[]{ args... };
 
-	for (const auto& e : myArray)
-	{
-		std::cout << e << std::endl;
-	};
-	std::cout << sizeof...(Types) << std::endl;
-	std::cout << sizeof...(args) << std::endl;
+void Function()
+{
+	std::cout << "---end---" << std::endl;
+}
+
+void Function(T arg, Types... args)
+{
+	std::cout << arg << " ";
+
+	Function(args...);
 }
 
 
