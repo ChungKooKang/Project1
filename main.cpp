@@ -2,16 +2,18 @@
 
 class MyClass
 {
-
+public :
+	~MyClass()
+	{
+		std::cout << "DELETE !" << std::endl;
+	}
 };
 
 
 int main()
 {
-	MyClass* p = new MyClass; // 일반 포인터
 
 	std::unique_ptr<MyClass> sp{ new MyClass }; // smart pointer
 
 
-	delete p;
 }
