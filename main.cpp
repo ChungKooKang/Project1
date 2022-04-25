@@ -13,8 +13,17 @@ class Song
 		}
 };
 
+void DoSomething(Song* p)
+{
+
+}
 
 int main()
 {
 	std::unique_ptr<Song> spSong{ std::make_unique<Song>(1, "BattleBGM")};
+
+	std::cout << spSong->mTrackNo << " : " << spSong->mTitle << std::endl;
+
+	DoSomething(spSong.get());
+	
 }
